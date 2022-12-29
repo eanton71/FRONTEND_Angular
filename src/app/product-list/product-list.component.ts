@@ -37,8 +37,9 @@ export class ProductListComponent {
     this.productForm.reset();
 
     this.productService.addNewProduct(name, price, description).subscribe(result => {
-
+      console.log('ADD ', name, price, description);
       if (result) {
+        console.log('GET ', result);
         this.getProducts();
       }
     })

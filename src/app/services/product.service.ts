@@ -8,10 +8,10 @@ import { Product } from '../products';
 })
 export class ProductService {
 
-  private url = 'http://localhost:3000/api/get_products';
-  private urlpost = 'http://localhost:3000/api/add_product';
-  private urldelete = 'http://localhost:3000/api/delete_product';
-  private urlput = 'http://localhost:3000/api/put_product';
+  private url = 'http://localhost:8000/api/get_products';
+  private urlpost = 'http://localhost:8000/api/add_product';
+  private urldelete = 'http://localhost:8000/api/delete_product';
+  private urlput = 'http://localhost:8000/api/put_product';
   constructor(private httpClient:HttpClient) { }
 
   getProducts():Observable<Product[]>{
@@ -20,8 +20,9 @@ export class ProductService {
 
   addNewProduct(name:string,price:number,description:string):Observable<object>{
 
-    const data = {name:name,price:price,description:description};
-
+    const data = { name: name, price: price, description: description };
+    console.log(data);
+    //CORRECCION {data} en windows,    {info:data} en MAC
     return this.httpClient.post(this.urlpost,{info:data},{observe:'body'}).pipe(catchError(this.handleError<any>('addNewProduct')));
   }
 
