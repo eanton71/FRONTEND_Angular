@@ -28,8 +28,7 @@ export class ProductListComponent {
   private getProducts(): void {
     this.productService.getProducts().subscribe(res => this.products = res);
   }
-
-
+ 
   add(): void {
 
     const { name, price, description } = this.productForm.getRawValue();
@@ -37,7 +36,7 @@ export class ProductListComponent {
     this.productForm.reset();
 
     this.productService.addNewProduct(name, price, description).subscribe(result => {
-      console.log('ADD ', name, price, description);
+      
       if (result) {
         console.log('GET ', result);
         this.getProducts();
@@ -45,24 +44,21 @@ export class ProductListComponent {
     })
 
   }
-
-  deleteProduct(index: number): void {
+ 
+  deleteProduct(index: number): void { 
     this.productService.deleteProduct(this.products[index]._id).subscribe(result => {
-      if (result) {
+      if (result) { 
         this.getProducts();
       }
     })
   }
   updateProduct(index: number): void {
-
-    console.log("src/app/product-list/product-list.component.ts, update product ", index)
-    const { name, price, description } = this.productForm.getRawValue();
-    this.productService.updateProduct(this.products[index]._id, name, price, description).subscribe(result => {
-      /*
-      implementar mensaje que indique se que actuzalizo la inforamcion
+    const { name, price, description } = this.productForm.getRawValue(); 
+    this.productService.updateProduct(this.products[index]._id, name, price, description).subscribe(result => {       
       if (result) {
+        this.productForm.reset();
         this.getProducts();
-      }*/
+      } 
     })
   }
 

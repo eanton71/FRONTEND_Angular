@@ -7,13 +7,19 @@ import { AppComponent } from './app.component';
 import { ProductListComponent } from './product-list/product-list.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 
+
+/**
+ * Decorador 
+ */
 @NgModule({
+  //Lista de componentes, directivas, ...
   declarations: [
     AppComponent,
     ProductListComponent,
     TopBarComponent
-   
+
   ],
+  //carga de los modulos que se usaran
   imports: [
     BrowserModule,
     AppRoutingModule,   
